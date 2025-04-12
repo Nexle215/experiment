@@ -72,7 +72,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 50
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -309,7 +309,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      kitchenassets_0: 2151314949252099971
+      kitchenassets_1: 8637059637022809549
+      kitchenassets_2: -2245306657098769818
+      kitchenassets_3: -921797709636769988
+      kitchenassets_4: 245117013844253735
+      kitchenassets_5: -8162993403341180934
+      kitchenassets_6: 7940866082806210812
+      kitchenassets_7: 3107340486458425396
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
