@@ -28,7 +28,7 @@ public class PlayerMouseControls : MonoBehaviour
         void Damage(int value)
         {
             points = points - value;
-            if (points < 1)
+            if (points == 0)  //< 1
             {
                 Destroy(Player);
             }
