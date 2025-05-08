@@ -5,35 +5,38 @@ using UnityEngine.SceneManagement;
 public class PlayerMouseControls : MonoBehaviour
 {
     private Vector2 mousePos;
-    
+    private AudioSource audioSource;
     private bool hasScrewdriver = false;
     private bool hasKey = false;
     private bool clickedbowl = true;
     private GameObject Player;
 
-    
-    void Start ()
+    public AudioClip clickClip;
+
+    void Start()
     {
         Player = GameObject.FindWithTag("player");
+        audioSource = GetComponent<AudioSource>();
     }
-    
+
     public void OnPoint(InputValue inputValue)
     {
         mousePos = inputValue.Get<Vector2>();
     }
 
     public int points = 3;
-    
 
 
-        void Damage(int value)
+
+    void Damage(int value)
+    {
+        points = points - value;
+        if (points == 0) //< 1
         {
-            points = points - value;
-            if (points == 0)  //< 1
-            {
-                Destroy(Player);
-            }
+            Destroy(Player);
         }
+        
+    }
 
 
     public void OnClick(InputValue inputValue)
@@ -53,12 +56,12 @@ public class PlayerMouseControls : MonoBehaviour
 
         switch (result.tag)
         {
-            case "key" :
+            case "key":
                 Debug.Log("Clicked key");
                 hasKey = true;
                 Destroy(result.gameObject);
                 break;
-            
+
             case "frontdoor":
                 if (hasKey == false)
                 {
@@ -67,13 +70,14 @@ public class PlayerMouseControls : MonoBehaviour
                 else
                 {
                     Debug.Log("I can open the door");
-                    Camera.main.transform.position = new Vector3(0.14f, 15.91f , -10);
-                    
+                    Camera.main.transform.position = new Vector3(0.14f, 15.91f, -10);
+
                 }
+
                 break;
-                
+
         }
-        
+
 
         switch (result.tag)
         {
@@ -98,9 +102,9 @@ public class PlayerMouseControls : MonoBehaviour
                 }
 
                 break;
-            
-            
-            
+
+
+
 
             default:
                 Debug.Log("I don't know what this is");
@@ -108,8 +112,8 @@ public class PlayerMouseControls : MonoBehaviour
 
 
         }
-        
-        
+
+
         switch (result.tag)
         {
             case "livingroom door":
@@ -134,29 +138,29 @@ public class PlayerMouseControls : MonoBehaviour
 
         switch (result.tag)
         {
-            case "play button" :
+            case "play button":
                 Camera.main.transform.position = new Vector3(-23.6f, 0.1397334f, -10);
-                break; 
+                break;
         }
-        
-        switch (result.tag)
-        {
-            case "openvent" :
-                Camera.main.transform.position = new Vector3(40.04f, -0.36f, -10);
-                break; 
-        }
-        
-        switch (result.tag)
-        {
-        case "bowl":
-        
-            Debug.Log("bowl");
-            clickedbowl = true;
-            Damage(1);
-        break;
-        }
-    
 
-}
-    
+        switch (result.tag)
+        {
+            case "openvent":
+                Camera.main.transform.position = new Vector3(40.04f, -0.36f, -10);
+                break;
+        }
+
+        switch (result.tag)
+        {
+            case "bowl":
+
+                Debug.Log("bowl");
+                clickedbowl = true;
+                Damage(1);
+                break;
+        }
+
+        audioSource.PlayOneShot(clickClip);
+    }
+
 }
