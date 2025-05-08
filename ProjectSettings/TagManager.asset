@@ -11,6 +11,12 @@ TagManager:
   - livingroom door
   - player
   - bowl
+  - PopUpBox
+  - play button
+  - key
+  - Vent Open
+  - openvent
+  - frontdoor
   layers:
   - Default
   - TransparentFX

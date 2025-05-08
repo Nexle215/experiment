@@ -7,6 +7,7 @@ public class PlayerMouseControls : MonoBehaviour
     private Vector2 mousePos;
     
     private bool hasScrewdriver = false;
+    private bool hasKey = false;
     private bool clickedbowl = true;
     private GameObject Player;
 
@@ -52,6 +53,30 @@ public class PlayerMouseControls : MonoBehaviour
 
         switch (result.tag)
         {
+            case "key" :
+                Debug.Log("Clicked key");
+                hasKey = true;
+                Destroy(result.gameObject);
+                break;
+            
+            case "frontdoor":
+                if (hasKey == false)
+                {
+                    Debug.Log("I need a key");
+                }
+                else
+                {
+                    Debug.Log("I can open the door");
+                    Camera.main.transform.position = new Vector3(0.14f, 15.91f , -10);
+                    
+                }
+                break;
+                
+        }
+        
+
+        switch (result.tag)
+        {
             case "Screwdriver":
                 Debug.Log("Clicked on Screwdriver");
                 hasScrewdriver = true;
@@ -73,6 +98,9 @@ public class PlayerMouseControls : MonoBehaviour
                 }
 
                 break;
+            
+            
+            
 
             default:
                 Debug.Log("I don't know what this is");
@@ -80,8 +108,8 @@ public class PlayerMouseControls : MonoBehaviour
 
 
         }
-
-
+        
+        
         switch (result.tag)
         {
             case "livingroom door":
@@ -100,8 +128,22 @@ public class PlayerMouseControls : MonoBehaviour
         switch (result.tag)
         {
             case "kitchen door":
-                Camera.main.transform.position = new Vector3(-23.6f, 0, -10);
+                Camera.main.transform.position = new Vector3(-23.6f, 0.1397334f, -10);
                 break;
+        }
+
+        switch (result.tag)
+        {
+            case "play button" :
+                Camera.main.transform.position = new Vector3(-23.6f, 0.1397334f, -10);
+                break; 
+        }
+        
+        switch (result.tag)
+        {
+            case "openvent" :
+                Camera.main.transform.position = new Vector3(40.04f, -0.36f, -10);
+                break; 
         }
         
         switch (result.tag)
