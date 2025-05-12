@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerMouseControls : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class PlayerMouseControls : MonoBehaviour
     private bool hasKey = false;
     private bool clickedbowl = true;
     private GameObject Player;
+    public TMP_Text Health;
 
     public AudioClip clickClip;
 
@@ -28,14 +30,14 @@ public class PlayerMouseControls : MonoBehaviour
 
 
 
-    void Damage(int value)
+     void Damage(int value)
     {
         points = points - value;
         if (points == 0) //< 1
         {
             Destroy(Player);
         }
-        
+       
     }
 
 
@@ -147,6 +149,13 @@ public class PlayerMouseControls : MonoBehaviour
         {
             case "openvent":
                 Camera.main.transform.position = new Vector3(40.04f, -0.36f, -10);
+                break;
+        }
+        
+        switch (result.tag)
+        {
+            case "gameover":
+                Camera.main.transform.position = new Vector3(0.14f, -15.91f, -10);
                 break;
         }
 

@@ -17,6 +17,7 @@ TagManager:
   - Vent Open
   - openvent
   - frontdoor
+  - gameover
   layers:
   - Default
   - TransparentFX
