@@ -33,16 +33,22 @@ public class PlayerMouseControls : MonoBehaviour
      void Damage(int value)
     {
         points = points - value;
+        Health.text = points.ToString();
         if (points == 0) //< 1
         {
-            Destroy(Player);
+            Camera.main.transform.position = new Vector3(0.08f, -16f, -10);
         }
-       
     }
 
 
     public void OnClick(InputValue inputValue)
     {
+        // This method doesn't work if the player clicked off the object
+        if (inputValue.isPressed == false)
+        {
+            return;
+        }
+        
         // convert screen position in unity coordinates
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePos);
         Collider2D result = Physics2D.OverlapPoint(worldPosition);
@@ -75,14 +81,8 @@ public class PlayerMouseControls : MonoBehaviour
                     Camera.main.transform.position = new Vector3(0.14f, 15.91f, -10);
 
                 }
-
                 break;
-
-        }
-
-
-        switch (result.tag)
-        {
+            
             case "Screwdriver":
                 Debug.Log("Clicked on Screwdriver");
                 hasScrewdriver = true;
@@ -105,64 +105,31 @@ public class PlayerMouseControls : MonoBehaviour
 
                 break;
 
-
-
-
-            default:
-                Debug.Log("I don't know what this is");
-                break;
-
-
-        }
-
-
-        switch (result.tag)
-        {
             case "livingroom door":
                 Camera.main.transform.position = new Vector3(0.1f, 0.1f, -10);
                 break;
 
-        }
-
-        switch (result.tag)
-        {
             case "back button yes":
                 Camera.main.transform.position = new Vector3(0, 0, -10);
                 break;
-        }
 
-        switch (result.tag)
-        {
             case "kitchen door":
                 Camera.main.transform.position = new Vector3(-23.6f, 0.1397334f, -10);
                 break;
-        }
 
-        switch (result.tag)
-        {
             case "play button":
                 Camera.main.transform.position = new Vector3(-23.6f, 0.1397334f, -10);
                 break;
-        }
 
-        switch (result.tag)
-        {
             case "openvent":
                 Camera.main.transform.position = new Vector3(40.04f, -0.36f, -10);
                 break;
-        }
-        
-        switch (result.tag)
-        {
+
             case "gameover":
-                Camera.main.transform.position = new Vector3(0.14f, -15.91f, -10);
+                SceneManager.LoadScene("scene2");
                 break;
-        }
 
-        switch (result.tag)
-        {
             case "bowl":
-
                 Debug.Log("bowl");
                 clickedbowl = true;
                 Damage(1);
