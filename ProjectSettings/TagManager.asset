@@ -18,6 +18,8 @@ TagManager:
   - openvent
   - frontdoor
   - gameover
+  - ctrls button
+  - back ctrls
   layers:
   - Default
   - TransparentFX

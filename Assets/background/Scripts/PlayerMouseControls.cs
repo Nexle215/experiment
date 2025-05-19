@@ -78,7 +78,7 @@ public class PlayerMouseControls : MonoBehaviour
                 else
                 {
                     Debug.Log("I can open the door");
-                    Camera.main.transform.position = new Vector3(0.14f, 15.91f, -10);
+                    Camera.main.transform.position = new Vector3(-47.8f, 1f, -10);
 
                 }
                 break;
@@ -128,7 +128,15 @@ public class PlayerMouseControls : MonoBehaviour
             case "gameover":
                 SceneManager.LoadScene("scene2");
                 break;
+            
+            case "ctrls button" :
+                Camera.main.transform.position = new Vector3(-25f, 15.9f, -10);
+                break;
 
+            case "back ctrls" :
+                Camera.main.transform.position = new Vector3(0.2f, 15.9f, -10);
+                break;
+                
             case "bowl":
                 Debug.Log("bowl");
                 clickedbowl = true;
