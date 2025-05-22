@@ -13,6 +13,9 @@ public class PlayerMouseControls : MonoBehaviour
     private GameObject Player;
     public TMP_Text Health;
 
+    public AudioSource gameBGM;
+    public AudioSource endingBGM;
+    
     public AudioClip clickClip;
 
     void Start()
@@ -78,8 +81,10 @@ public class PlayerMouseControls : MonoBehaviour
                 else
                 {
                     Debug.Log("I can open the door");
+                    gameBGM.Stop();
+                    
                     Camera.main.transform.position = new Vector3(-47.8f, 1f, -10);
-
+                    endingBGM.Play();
                 }
                 break;
             
@@ -100,7 +105,7 @@ public class PlayerMouseControls : MonoBehaviour
                 {
                     Debug.Log("I have a screwdriver yippieee");
                     //move camera to the open vent view
-                    Camera.main.transform.position = new Vector3(22.56f, 0, -10);
+                    Camera.main.transform.position = new Vector3(21.7f, -0.2f, -10);
                 }
 
                 break;
@@ -122,7 +127,7 @@ public class PlayerMouseControls : MonoBehaviour
                 break;
 
             case "openvent":
-                Camera.main.transform.position = new Vector3(40.04f, -0.36f, -10);
+                Camera.main.transform.position = new Vector3(42.9f, -0.4f, -10);
                 break;
 
             case "gameover":
@@ -134,6 +139,14 @@ public class PlayerMouseControls : MonoBehaviour
                 break;
 
             case "back ctrls" :
+                Camera.main.transform.position = new Vector3(0.2f, 15.9f, -10);
+                break;
+            
+            case "storybutton" :
+                Camera.main.transform.position = new Vector3(-46.76f, 16f, -10);
+                break;
+            
+            case "back story" :
                 Camera.main.transform.position = new Vector3(0.2f, 15.9f, -10);
                 break;
                 
